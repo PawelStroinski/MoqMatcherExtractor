@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Foo.cs" />
-    <Compile Include="MatcherExtractorTest.cs" />
+    <Compile Include="ExtractorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

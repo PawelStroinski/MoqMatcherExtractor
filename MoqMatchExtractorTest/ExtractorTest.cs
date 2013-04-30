@@ -6,12 +6,12 @@ using Moq;
 
 namespace MoqMatcherExtractorTest
 {
-    public class MatcherExtractorTest
+    public class ExtractorTest
     {
         [Test]
         public void Single()
         {
-            var result = MatcherExtractor.Extract(() => It.Is<Foo>(f => f.Bar == 10));
+            var result = Extractor.Extract(() => It.Is<Foo>(f => f.Bar == 10));
             Assert.IsTrue(result(new Foo { Bar = 10 }));
             Assert.IsFalse(result(new Foo { Bar = 5 }));
         }
@@ -19,8 +19,8 @@ namespace MoqMatcherExtractorTest
         [Test]
         public void Multiple()
         {
-            var result1 = MatcherExtractor.Extract(() => It.Is<Foo>(f => f.Bar == 5 || f.Bar == 1));
-            var result2 = MatcherExtractor.Extract(() => It.Is<Foo>(f => f.Bar == 10 || f.Bar == 1));
+            var result1 = Extractor.Extract(() => It.Is<Foo>(f => f.Bar == 5 || f.Bar == 1));
+            var result2 = Extractor.Extract(() => It.Is<Foo>(f => f.Bar == 10 || f.Bar == 1));
             Assert.IsFalse(result1(new Foo { Bar = 10 }));
             Assert.IsTrue(result2(new Foo { Bar = 10 }));
             Assert.IsTrue(result1(new Foo { Bar = 5 }));
@@ -30,7 +30,7 @@ namespace MoqMatcherExtractorTest
         [Test]
         public void ItIsAny()
         {
-            var result = MatcherExtractor.Extract(() => It.IsAny<Foo>());
+            var result = Extractor.Extract(() => It.IsAny<Foo>());
             Assert.IsTrue(result(new Foo()));
             Assert.IsTrue(result(null));
         }
@@ -38,14 +38,14 @@ namespace MoqMatcherExtractorTest
         [Test]
         public void Null()
         {
-            var exception = Assert.Throws<ArgumentException>(() => MatcherExtractor.Extract<Foo>(null));
+            var exception = Assert.Throws<ArgumentException>(() => Extractor.Extract<Foo>(null));
             Assert.AreEqual("match", exception.Message);
         }
 
         [Test]
         public void FromMethod()
         {
-            var result = MatcherExtractor.Extract(Method);
+            var result = Extractor.Extract(Method);
             Assert.IsTrue(result(new Foo { Bar = 10 }));
         }
 

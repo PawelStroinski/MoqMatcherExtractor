@@ -16,7 +16,7 @@ namespace MoqMatcherExtractor
     /// This code allows to use existing It.Is<>() written for Moq to setup non-Moq
     /// test mocks. Example: Extract(() => It.Is<Foo>(f => f.Bar == 10))
     /// </summary>
-    public static class MatcherExtractor
+    public static class Extractor
     {
         public static Func<T, bool> Extract<T>(Func<T> match)
         {
