@@ -6,7 +6,7 @@ using System.Reflection;
 namespace MoqMatcherExtractor
 {
     /// <summary>
-    /// !!! WARNING : DANGERUS CODE !!!
+    /// !!! WARNING : DANGEROUS CODE !!!
     /// This code uses reflection to get to internals of Moq.
     /// So it will stop working when something needed will be renamed/moved/removed in Moq.
     /// What you can do then:
